@@ -1,22 +1,8 @@
 # terraform_march_2021
-
-## Please add below code
-```
-module "wordpress" {
-    source             = "../"
-    desired_capacity   = 3
-    max_size           = 3
-    min_size           = 3
-    instance_type      = "c5.large"
-    region             = "us-east-1"
-}
-```
-
-# terraform_march_2021
 ## Please add below code
 ```
 module "rds" {
-    source = "Taherasharifi/rds-instace/aws"
+    source = "farrukh90/rds-instance/aws"
     region              = "us-east-2"
     identifier          = "dbname"
     allocated_storage   = 20
@@ -38,17 +24,15 @@ module "rds" {
     ]
 }
 output "region" {
-	value = module.wordpress_db.region
+	value = module.rds.region
 }
 output "subnet_list" {
-	value = module.wordpress_db.subnet_list
+	value = module.rds.subnet_list
 }
 output "allowed_hosts" {
-	value = module.wordpress_db.allowed_hosts
+	value = module.rds.allowed_hosts
 }
-output "wordpress_db_NAME" {
-	value = module.wordpress_db.DB_NAME
+output "rds" {
+	value = module.rds.DB_NAME
 }
 ```
-
-
